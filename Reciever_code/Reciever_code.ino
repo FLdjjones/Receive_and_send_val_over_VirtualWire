@@ -1,7 +1,6 @@
 #include <VirtualWire.h>
 #include <DigiUSB.h>
 
-#define receive_pin  5
 
 void setup()
 {
@@ -17,15 +16,11 @@ void loop()
 
   if (vw_get_message(buf, &buflen)) // Non-blocking
     {
-	int i;
-	DigiUSB.println("Got: ");
 	
-	for (i = 0; i < buflen; i++)
+	for (int i = 0; i < buflen; i++)
 	{
 	    DigiUSB.println(buf[i]);
-	    DigiUSB.println(' ');
 	}
-	DigiUSB.println();
         DigiUSB.delay(500);
     }
 }
