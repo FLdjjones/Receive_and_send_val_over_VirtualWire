@@ -5,9 +5,9 @@
 
 void setup()
 {
-	vw_set_rx_pin(5);
-	vw_setup(2000);
-    vw_rx_start();
+   vw_set_rx_pin(5);
+   vw_setup(2000);
+   vw_rx_start();
 }
 
 void loop()
@@ -18,13 +18,14 @@ void loop()
   if (vw_get_message(buf, &buflen)) // Non-blocking
     {
 	int i;
-	DigiUSB.print("Got: ");
+	DigiUSB.println("Got: ");
 	
 	for (i = 0; i < buflen; i++)
 	{
-	    DigiUSB.print(buf[i]);
-	    DigiUSB.print(' ');
+	    DigiUSB.println(buf[i]);
+	    DigiUSB.println(' ');
 	}
 	DigiUSB.println();
+        DigiUSB.delay(500);
     }
 }
